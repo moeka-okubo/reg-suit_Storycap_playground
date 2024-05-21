@@ -1,0 +1,21 @@
+{
+  "core": {
+    "workingDir": ".reg",
+    "baseBranch": "main"
+  },
+  "plugins": {
+    "reg-keygen-git-hash-plugin": {},
+    "reg-publish-s3-plugin": {},
+    "reg-notify-github-plugin": {}
+  },
+  "before": [
+    {
+      "name": "exec",
+      "command": "npm run storybook:build"
+    },
+    {
+      "name": "exec",
+      "command": "npx storycap --serverCmd \"start-storybook -p 6006\" --captureTimeout 60 --outDir __screenshots__"
+    }
+  ]
+}
